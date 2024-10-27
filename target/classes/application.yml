@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=eBook;encrypt=false;trustServerCertificate=true
+    username: sa
+    password: curso@1234
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: update # ou outra op��o conforme a sua necessidade (create, validate, etc)
+    show-sql: true     # para exibir as queries SQL no console
+    database-platform: org.hibernate.dialect.SQLServerDialect
+
