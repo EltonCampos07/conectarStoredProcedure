@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/consulta")
+@RequestMapping("/lista-negativa")
 public class ListaNegativaController {
 
     private final ListaNegativaRepository listaNegativaRepository;
@@ -25,7 +25,7 @@ public class ListaNegativaController {
         this.objectMapper = objectMapper;
     }
 
-    @GetMapping()
+    @GetMapping("/consulta")
     public ResponseEntity<JsonNode> consultarListaNegativa(@RequestBody JsonNode inputPayload) throws JsonProcessingException {
         var consulta = listaNegativaRepository
                 .chamarProcedure(inputPayload.toString());
