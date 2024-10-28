@@ -1,5 +1,6 @@
 package exemplo.com.br.listaNegativa.exception;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,6 +23,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleInternalServerError(Exception ex) {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Erro Interno: " + ex.getMessage());
+    }
+
+    @ExceptionHandler(JsonProcessingException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<String> handleJsonError(Exception ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body("Erro Interno: " + ex.getMessage());
     }
 }
